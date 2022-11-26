@@ -1,0 +1,54 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+	{% include "head.html" %}
+<body>
+	<div id="page" class="site" itemscope itemtype="http://schema.org/LocalBusiness">
+		{% include "header.html" %}
+		
+		<!-- End of Others talk -->
+		<section class="page-heading">
+			<div class="container">
+				<h2>Ultimas noticias</h2>
+			</div>
+		</section>
+		<section class="latest-news">
+			<div class="container" itemprop="event" itemscope itemtype=" http://schema.org/Event">
+				{% if news|length > 0 %}
+				<div class="owl-two owl-carousel">
+
+
+					{% for new in news %}
+					<div class="news-wrap" itemprop="event">
+						<div class="news-img-wrap" itemprop="image">
+							<img src="{{new.image.url}}" alt="Latest News Images">
+						</div>
+						<div class="news-detail" itemprop="description">
+							<a href=""><h1>{{new.title}}</h1></a>
+							<h2 itemprop="startDate">{{new.date}}</h2>
+							<p>{{new.description}}</p>
+						</div>
+					</div>
+					{% endfor %}
+
+					</div>
+				{% else %}
+					<section class="container page-heading" style="text-align: center;">
+						<h2>No se han publicado noticias</h2>
+					</section>
+				{% endif %}
+
+
+			</div>
+		</section>
+	</div>
+	<script type="text/javascript" src="{% static 'js/jquery-3.3.1.min.js' %}"></script>
+	<script type="text/javascript" src="{% static 'js/lightbox.js' %}"></script>
+	<script type="text/javascript" src="{% static 'js/all.js' %}"></script>
+	<script type="text/javascript" src="{% static 'js/isotope.pkgd.min.js' %}"></script>
+	<script type="text/javascript" src="{% static 'js/owl.carousel.js' %}"></script>
+	<script type="text/javascript" src="{% static 'js/jquery.flexslider.js' %}"></script>
+	<script type="text/javascript" src="{% static 'js/jquery.rateyo.js' %}"></script>
+	<script type="text/javascript" src="{% static 'js/custom.js' %}"></script>
+</body>
+</html>

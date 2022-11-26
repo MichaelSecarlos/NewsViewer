@@ -1,0 +1,32 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% include "head.html" %}
+</head>
+<body>
+    {% include "header.html" %}
+    <div class="container">
+        <form action="/news/form/" method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div>
+                <label>Titulo: </label>
+                <input name="title" type="text" namespace="Titulo">
+            </div>
+            <div>
+                <label>Descripcion: </label>
+                <textarea name="description" cols="64" rows="16"></textarea>
+            </div>
+            <div>
+                <label>Imagen</label>
+                <input name="image" type="file">
+            </div>
+            <div>
+                <input type="submit" value="Enviar">
+            </div>
+        </form>
+    </div>
+
+</body>
+</html>
